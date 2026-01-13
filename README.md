@@ -1,40 +1,50 @@
 # 🧭 Pathweaver for SillyTavern
 
-> **Never get stuck again. Let AI weave the next strand of your story.**
+> **Elevate your stories and roleplays from good to unforgettable. Pathweaver injects fresh ideas, unexpected twists, and genre-perfect moments exactly when you need them, making every session feel like a professionally crafted story.**
 
 ## 🆕 What's New
 
 ### ***ver 1.0.0***
 - **Initial Release!**
-- **Action Bar**: Sleek, glass-morphism UI that sits right where you need it.
-- **Director Mode**: Take control. Tell Pathweaver exactly what you want (e.g., "A sudden betrayal. A knife fight ensues!"), and it will generate specific options.
-- **Genre & Custom Dropdowns**: Dedicated, icon-rich menus for suggestions -- Context-Aware, Plot-Twist, New Character, Explicit, and Genre-specific, plus, create your own custom styles.
-- **Mobile Optimized**: Fully responsive design that works perfectly on phones and tablets.
 
 ![Version](https://img.shields.io/badge/SillyTavern-v1.12%2B-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
+![GitHub stars](https://img.shields.io/github/stars/mattjaybe/SillyTavern-Pathweaver?style=social)
+![GitHub issues](https://img.shields.io/github/issues/mattjaybe/SillyTavern-Pathweaver)
+![GitHub release](https://img.shields.io/github/v/release/mattjaybe/SillyTavern-Pathweaver)
 
 **Pathweaver** is a creative companion extension for [SillyTavern](https://github.com/SillyTavern/SillyTavern). It analyzes your current chat context and generates Suggestions — options for where the story could go next. Whether you need a sudden plot twist, a new character introduction, or just a little nudge to break writer's block, Pathweaver provides up to 6 distinctive suggestions for every request.
 
 <p align="center">
-  <img src="https://placeholder.com/pathweaver-hero.png" alt="Pathweaver Hero" width="100%">
+  <a href="https://github.com/user-attachments/assets/6279f0a6-e0fe-4315-bdea-c392db73d5e8"><img src="https://github.com/user-attachments/assets/6279f0a6-e0fe-4315-bdea-c392db73d5e8" alt="Pathweaver" width="70%"></a>
   <br>
-  <sub><em>The Pathweaver bar suggests next steps, twists, and character beats instantly</em></sub>
+  <sub><em>The Pathweaver bar - Director Mode, Context-Aware, Plot Twist, New Character, Explicit, Custom, and Genre suggestions.</em></sub>
 </p>
 
 ---
 
-## ✨ Feature Highlights
+## ✨ Key Features
 
-| Feature | Description |
-|---------|-------------|
-| 🧭 **Context-Aware** | Analyzes the last 2 to 10 messages to suggest logical, coherent continuations |
-| 🎬 **Director Mode** | You're the boss. Single Scene or Story Beat - input short directions to tailor your own suggestions |
-| 🎭 **Genre Packs** | Specialized suggestions for Horror, Romance, Sci-Fi, Comedy, Fantasy, and more |
-| 🔌 **Easy Connect** | Use your existing SillyTavern API connection, Connection Profiles, Ollama, or custom OpenAI-compatible endpoints |
-| 📱 **Mobile Ready** | Smart responsive design that consolidates buttons into touch-friendly dropdowns on small screens |
-| ✏️ **Custom Styles** | Create your own suggestion presets (e.g., "Emo", "Fluffcore", "Manga") |
-| 🧩 **Seamless UI** | Integrated "Glass" design that looks like a native part of SillyTavern |
+<table>
+<tr>
+<td width="50%">
+
+### 🎯 Smart Generation
+- **Context-Aware**: Analyzes 2-10 messages for coherent suggestions
+- **Director Mode**: Single Scene or Story Beats for precise control
+- **Genre Specialization**: 9 built-in genres + unlimited custom styles
+
+</td>
+<td width="50%">
+
+### ⚙️ Flexible & Powerful
+- **Multiple Backends**: Main API, Connection Profiles, Ollama, OpenAI-compatible
+- **Responsive Design**: Works on desktop, tablets, and smartphones
+- **Seamless Integration**: Glass UI design matches SillyTavern perfectly
+
+</td>
+</tr>
+</table>
 
 ---
 
@@ -48,16 +58,17 @@ Pathweaver adds a **Control Bar** above your chat input. Click any button to ins
 |------|----------|-------|
 | 🎬 | **Director** | Opens a simplified input box. You type a prompt, AI gives you tailored suggestions. |
 | 🧭 | **Context-Aware** | "What happens next?" Smart suggestions based on story logic and context. |
-| 🔀 | **Twist** | Throws a curveball. Unexpected events, betrayals, and shocks. |
+| 🔀 | **Plot Twist** | Throws a curveball. Unexpected events, betrayals, and shocks. |
 | 👤+ | **New Character** | Adds a new character to the story based on a variety of character tropes. |
 | 🔥 | **Explicit** | (Optional) NSFW Spicy suggestions. Only one hand needed. |
 | 🎭 | **Genres** | A dropdown menu with specific genre flavors: Horror, Romance, Sci-Fi, etc. |
-| 📚 | **Custom** | Your own saved styles appear here (e.g., specific lore prompts). |
+| 📚 | **Custom** | Create custom suggestions, such as genre mashups like "Cyberpunk-Noir" or "Cozy-Horror". |
 
 <p align="center">
-  <img src="https://placeholder.com/pathweaver-modal.png" alt="Pathweaver Suggestions" width="700">
+  <a href="https://github.com/user-attachments/assets/34441011-cc9c-4ee7-9227-6563e30f5886"><img src="https://github.com/user-attachments/assets/34441011-cc9c-4ee7-9227-6563e30f5886" alt="Pathweaver - Director Mode" width="70%"></a>
   <br>
-  <sub><em>Click a suggestion to instantly insert it into the chat input or copy it to clipboard</em></sub>
+  <sub><em>Direct your next scene with Single Scene or Story Beat modes.
+</em></sub>
 </p>
 
 ---
@@ -71,6 +82,18 @@ Pathweaver adds a **Control Bar** above your chat input. Click any button to ins
    https://github.com/mattjaybe/SillyTavern-Pathweaver
    ```
 4. Click **Install** and refresh SillyTavern
+
+---
+
+## 🚀 Quick Start
+
+1. **Install the extension** (see Installation above)
+2. **Refresh SillyTavern** - You'll see the Pathweaver bar appear above your chat input
+3. **Start a conversation** with any character
+4. **Click any button** on the bar (try 🧭 Context-Aware first!)
+5. **Pick a suggestion** and watch your story unfold
+
+That's it! Pathweaver works with your existing API setup - no additional configuration needed.
 
 ---
 
@@ -92,7 +115,14 @@ Access Pathweaver settings by clicking the ⚙️ gear icon on the right side of
 - **Show Explicit**: Toggle the visibility of the "Explicit" (Fire icon) category.
 - **Button Size**: Compact, Default, or Max.
 - **Font Size**: Adjust the size of the text from Small, Default, or Large.
-- **Minimal Mode**: Arrow on the bar collapses the bar into a small pill when not in use.
+- **Minimal Mode**: Arrow on the bar hides and shows Pathweaver.
+
+<p align="center">
+  <a href="https://github.com/user-attachments/assets/380434d3-3ab6-4e1c-857c-ad5bc5d660aa"><img src="https://github.com/user-attachments/assets/380434d3-3ab6-4e1c-857c-ad5bc5d660aa" alt="Pathweaver - Settings" width="70%"></a>
+  <br>
+  <sub><em>Quickly and easily adjust the Pathweaver settings to your preferences.
+</em></sub>
+</p>
 
 ---
 
@@ -152,7 +182,7 @@ The screenshots use a custom high-contrast theme optimized for readability. Copy
 
 ### 🎙️ Featured Scenario: Real Talk Podcast
 
-The reactions in the screenshots are based on this original character card. Use it to test Pathweaver:
+Explore Pathweaver with the custom-made Real Talk Podcast story:
 
 <table>
   <tr>
@@ -178,10 +208,16 @@ The reactions in the screenshots are based on this original character card. Use 
 
 ## 🤝 Contributing
 
-Contributions are welcome! Feel free to:
-- Submit bug reports and feature requests via [Issues](https://github.com/mattjaybe/SillyTavern-Pathweaver/issues)
-- Share your custom styles with the community
-- Submit pull requests for improvements
+Love Pathweaver? Here's how you can help:
+
+- ⭐ **Star this repo** to show support
+- 🐛 **Report bugs** via [Issues](https://github.com/mattjaybe/SillyTavern-Pathweaver/issues)
+- 💡 **Request features** you'd love to see
+- 🎨 **Share custom styles** with the community ([Discussion](link))
+- 🔧 **Submit PRs** for improvements
+- 📣 **Spread the word** and tell your friends about Pathweaver
+
+**Pro contributors**: Check [CONTRIBUTING.md](CONTRIBUTING.md) for development setup
 
 ---
 
