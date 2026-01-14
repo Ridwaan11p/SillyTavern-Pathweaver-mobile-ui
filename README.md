@@ -4,8 +4,9 @@
 
 ## 🆕 What's New
 
-### ***ver 1.0.0***
-- **Initial Release!**
+### ***ver 1.0.4***
+- Insert Type: optional feature to copy/insert/send suggestions inside either [OOC: ] or [Director: ]
+- Added a field for custom OpenAI-compatible endpoints that require an API key
 
 ![Version](https://img.shields.io/badge/SillyTavern-v1.12%2B-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
@@ -252,6 +253,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 <p align="center">
   Made with ❤️ for the SillyTavern community
 </p>
+
 
 
 
