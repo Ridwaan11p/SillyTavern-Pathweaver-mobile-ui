@@ -4,7 +4,7 @@
 
 ## 🆕 What's New
 
-### ***ver 1.0.4***
+### ***ver 1.0.5***
 - Insert Type: optional feature to copy/insert/send suggestions inside either [OOC: ] or [Director: ]
 - Added a field for custom OpenAI-compatible endpoints that require an API key
 
@@ -253,6 +253,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 <p align="center">
   Made with ❤️ for the SillyTavern community
 </p>
+
 
 
 
