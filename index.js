@@ -476,7 +476,17 @@ GUIDELINES:
         abortController = new AbortController();
 
         try {
-            const categoryPrompt = await loadPrompt(category);
+            let categoryPrompt = await loadPrompt(category);
+
+            // Perform macro substitution ({{user}}, {{char}})
+            const charName = storyContext.characterInfo.replace('Character: ', '') || 'Character';
+            const userName = stContext.name1 || 'User';
+
+            categoryPrompt = categoryPrompt
+                .replace(/{{char}}/g, charName)
+                .replace(/{{user}}/g, userName)
+                .replace(/{{model}}/g, charName); // some prompts use model as char alias
+
             let contextBlock = '';
 
             if (storyContext.characterInfo) contextBlock += `${storyContext.characterInfo}\n\n`;
