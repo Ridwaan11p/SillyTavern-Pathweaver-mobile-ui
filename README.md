@@ -11,7 +11,6 @@
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![GitHub stars](https://img.shields.io/github/stars/mattjaybe/SillyTavern-Pathweaver?style=social)
 ![GitHub issues](https://img.shields.io/github/issues/mattjaybe/SillyTavern-Pathweaver)
-![GitHub release](https://img.shields.io/github/v/release/mattjaybe/SillyTavern-Pathweaver)
 
 **Pathweaver** is a creative companion extension for [SillyTavern](https://github.com/SillyTavern/SillyTavern). It analyzes your current chat context and generates Suggestions — options for where the story could go next. Whether you need a sudden plot twist, a new character introduction, or just a little nudge to break writer's block, Pathweaver provides up to 6 distinctive suggestions for every request.
 
@@ -253,5 +252,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 <p align="center">
   Made with ❤️ for the SillyTavern community
 </p>
+
 
 
