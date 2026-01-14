@@ -350,7 +350,7 @@ GUIDELINES:
             cleaned = cleaned.replace(/<[^>]*>/g, '');
             const txt = document.createElement('textarea');
             txt.innerHTML = cleaned;
-            return txt.value.substring(0, 2000);
+            return txt.value.substring(0, 10000);
         };
 
         const depth = Math.max(2, Math.min(10, settings.context_depth || 4));
@@ -482,10 +482,10 @@ GUIDELINES:
             if (storyContext.characterInfo) contextBlock += `${storyContext.characterInfo}\n\n`;
             if (settings.include_scenario && storyContext.scenario) contextBlock += `Scenario: ${storyContext.scenario}\n\n`;
             if (settings.include_description && storyContext.description) {
-                contextBlock += `Character Description: ${storyContext.description.substring(0, 800)}\n\n`;
+                contextBlock += `Character Description: ${storyContext.description.substring(0, 10000)}\n\n`;
             }
             if (settings.include_worldinfo && storyContext.worldInfo) {
-                contextBlock += `World Lore:\n${storyContext.worldInfo.substring(0, 1500)}\n\n`;
+                contextBlock += `World Lore:\n${storyContext.worldInfo.substring(0, 10000)}\n\n`;
             }
             contextBlock += `Recent conversation:\n${storyContext.history}`;
 
