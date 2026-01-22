@@ -2876,85 +2876,85 @@
 }
 
 /* ============================================================
-   MOBILE & LANDSCAPE "APP PAGE" FIX (v2)
-   Forces full-screen rendering and fixes landscape visibility
+   MOBILE & LANDSCAPE FINAL FIX (v3)
+   Fixes: Scrolling, Overscroll/Refresh, and Cut-off Content
    ============================================================ */
 
 @media (max-width: 768px),
 (max-height: 600px) {
 
-    /* 1. FORCE THE OVERLAY TO BE A PAGE */
+    /* 1. THE SCROLLABLE PAGE CONTAINER */
     .pw_modal_overlay {
         display: block !important;
-        /* Disable Flexbox centering */
         position: fixed !important;
-
-        /* Modern fix for "disappearing" elements in landscape */
         inset: 0 !important;
-        /* Sets top, left, right, bottom to 0 all at once */
         width: 100vw !important;
-        height: 100vh !important;
         height: 100dvh !important;
-        /* Dynamic height (ignores URL bar issues) */
-
-        /* Force GPU rendering to fix the "invisible" bug */
-        transform: translateZ(0) !important;
-
-        background: var(--SmartThemeBlurTintColor, #1a1b26) !important;
-        overflow-y: auto !important;
-        /* Scroll the page, not the box */
-        -webkit-overflow-scrolling: touch;
-        padding: 0 !important;
+        /* Use dynamic height */
         z-index: 20000 !important;
-        /* Ensure it's above SillyTavern UI */
+        background: var(--SmartThemeBlurTintColor, #1a1b26) !important;
+
+        /* SCROLLING MAGIC */
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+        /* Momentum scrolling */
+
+        /* PREVENT PULL-TO-REFRESH */
+        overscroll-behavior-y: contain !important;
+        /* This stops the refresh! */
+        overscroll-behavior: contain !important;
+
+        /* Force GPU to keep it visible */
+        transform: translateZ(0) !important;
     }
 
-    /* 2. ENSURE VISIBILITY WHEN ACTIVE */
-    /* Sometimes transitions get stuck in landscape, this forces it open */
+    /* 2. FORCE VISIBILITY */
     .pw_modal_overlay.active {
         opacity: 1 !important;
         visibility: visible !important;
     }
 
-    /* 3. FLATTEN THE MODAL CONTENT */
+    /* 3. THE CONTENT WRAPPER */
     .pw_modal {
-        position: static !important;
-        /* Just flow naturally in the overlay */
+        position: relative !important;
+        /* Changed from static to relative */
         width: 100% !important;
         max-width: 100% !important;
+        /* Allow height to grow naturally with content */
+        height: auto !important;
         min-height: 100% !important;
+
+        background: transparent !important;
         border: none !important;
         border-radius: 0 !important;
         box-shadow: none !important;
-        background: transparent !important;
-        transform: none !important;
         margin: 0 !important;
+        transform: none !important;
+
+        /* IMPORTANT: Move padding here to ensure scrollable area includes bottom space */
+        padding-bottom: 150px !important;
     }
 
-    /* 4. STICKY HEADER (LIKE AN APP) */
+    /* 4. STICKY APP HEADER */
     .pw_modal_header {
         position: sticky;
         top: 0;
         z-index: 999;
         background: var(--SmartThemeBlurTintColor, #1a1b26) !important;
         border-bottom: 1px solid var(--pw-glass-border);
-        padding: 8px 16px !important;
-        /* Ensure header background is opaque so text doesn't scroll through it */
+        padding: 10px 16px !important;
         backdrop-filter: none !important;
     }
 
-    /* 5. BODY CONTENT FIXES */
+    /* 5. BODY CONTENT */
     .pw_modal_body {
         height: auto !important;
         overflow: visible !important;
-        /* Let the parent overlay handle scrolling */
         padding: 16px !important;
-        padding-bottom: 100px !important;
-        /* Extra space for keyboard/nav bar */
+        /* Remove padding bottom here, we moved it to .pw_modal */
     }
 
-    /* 6. DIRECTOR MODE SPECIFIC FIXES */
-    /* Unlocks the height so you can see all inputs in landscape */
+    /* 6. DIRECTOR MODE UNLOCKS */
     .pw_director_container {
         min-height: auto !important;
         height: auto !important;
@@ -2966,7 +2966,13 @@
         overflow: visible !important;
     }
 
-    /* 7. HIDE SCROLLBARS (Visual Polish) */
+    /* Ensure input fields don't cause horizontal scrolling */
+    .pw_director_input {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* 7. HIDE SCROLLBARS */
     .pw_modal_overlay::-webkit-scrollbar {
         width: 0px;
         background: transparent;
