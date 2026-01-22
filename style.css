@@ -2876,91 +2876,77 @@
 }
 
 /* ============================================================
-   MOBILE LANDSCAPE FIXES (Moto E22 & Termux Optimization)
+   MOBILE "NATIVE APP PAGE" OVERHAUL
+   Turns modals into full-screen pages for Mobile & Landscape
    ============================================================ */
 
-/* 
-   Targeting devices with limited height (Landscape Mobile) 
-   and forcing modals to behave like scrollable pages 
-*/
-@media (max-height: 600px) and (orientation: landscape) {
+@media (max-width: 768px),
+(max-height: 600px) {
 
-    /* 1. UN-CENTER THE OVERLAY */
-    /* This fixes the "cut off top" issue. We stop centering and allow the overlay itself to scroll. */
+    /* 1. MAKE THE OVERLAY THE "PAGE" BACKGROUND */
     .pw_modal_overlay {
-        display: block !important; /* Disables flex centering */
-        overflow-y: auto !important; /* Enables scrolling for the whole page */
+        display: block !important;
         padding: 0 !important;
-        align-items: flex-start !important;
+        /* Force solid background matching your ST theme */
+        background: var(--SmartThemeBlurTintColor, #1a1b26) !important;
+        backdrop-filter: none !important;
+        /* Performance boost for Moto E22 */
+        overflow-y: auto !important;
+        /* Main page scroll */
+        -webkit-overflow-scrolling: touch;
+        /* Smooth momentum scrolling */
     }
 
-    /* 2. MAKE MODAL FULL SCREEN */
-    /* Removes borders, radius, and creates a full canvas */
+    /* 2. REMOVE THE "BOX" LOOK */
     .pw_modal {
         width: 100% !important;
         max-width: 100% !important;
-        min-height: 100vh !important; /* Force it to fill screen height */
+        min-height: 100% !important;
         margin: 0 !important;
-        border-radius: 0 !important;
-        transform: none !important;
         border: none !important;
-        position: relative !important;
-        top: 0 !important;
+        border-radius: 0 !important;
         box-shadow: none !important;
+        transform: none !important;
+        background: transparent !important;
+        /* Let overlay bg show through */
+        position: static !important;
     }
 
-    /* 3. STICKY HEADER */
-    /* Keeps the close button visible while you scroll down */
+    /* 3. STICKY HEADER (App Bar Style) */
     .pw_modal_header {
         position: sticky;
         top: 0;
-        z-index: 100;
-        background: var(--SmartThemeBlurTintColor, rgba(30, 30, 40, 0.98));
-        padding: 5px 10px !important; /* Compact padding */
+        z-index: 999;
+        /* Solid background so content scrolls BEHIND it, not through it */
+        background: var(--SmartThemeBlurTintColor, #1a1b26) !important;
         border-bottom: 1px solid var(--pw-glass-border);
+        padding: 10px 15px !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
 
-    /* 4. CONTENT SCROLLING */
-    /* We disable internal scrolling and let the whole page scroll instead */
+    /* 4. CONTENT FLOW */
+    /* Remove internal scrollbars, let the whole page scroll naturally */
     .pw_modal_body {
-        height: auto !important;
         overflow: visible !important;
-        padding: 10px 10px 40px 10px !important; /* Extra bottom padding for navigation/keyboard */
+        height: auto !important;
+        padding: 15px !important;
+        padding-bottom: 80px !important;
+        /* Space for bottom nav/keyboard */
     }
 
-    /* 5. DIRECTOR MODE SPECIFIC FIXES */
-    /* Override the Javascript inline max-height so inputs don't get crushed */
-    #pw_director_inputs {
-        max-height: none !important; 
-        overflow: visible !important;
-    }
-    
-    /* Make the director input boxes smaller to fit more on screen */
-    .pw_director_input_group {
-        padding: 4px 8px !important;
-        margin-bottom: 5px;
-    }
-    
+    /* 5. DIRECTOR MODE FIXES */
+    /* Fix the specific cut-off issue you saw in your screenshot */
     .pw_director_container {
         min-height: auto !important;
     }
 
-    /* Hide non-essential UI elements to save space */
-    .pw_mode_desc {
-        display: none !important; /* Hide description text in landscape */
-    }
-    
-    .pw_mode_option {
-        padding: 6px !important; /* Smaller mode buttons */
+    #pw_director_inputs {
+        max-height: none !important;
+        overflow: visible !important;
     }
 
-    /* 6. SETTINGS MODAL FIXES */
-    /* Two column layout for toggles to save vertical space */
-    .pw_settings_content .pw_settings_section {
-        padding: 8px !important;
-    }
-    
-    .pw_toggle_row {
-        margin-bottom: 6px !important;
+    /* 6. HIDE "DESKTOP" SCROLLBARS ON MOBILE */
+    .pw_modal_overlay::-webkit-scrollbar {
+        width: 4px;
     }
 }
