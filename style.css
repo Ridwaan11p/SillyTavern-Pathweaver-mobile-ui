@@ -2876,8 +2876,8 @@
 }
 
 /* ============================================================
-   MOBILE & LANDSCAPE FINAL FIX (v4)
-   Fixes: Clipping Issue (max-height), Scrolling, Overscroll
+   MOBILE & LANDSCAPE FINAL FIX (v5)
+   Fixes: Header Transparency, Zoom/Pan, Clipping, Scrolling
    ============================================================ */
 
 @media (max-width: 768px),
@@ -2888,13 +2888,25 @@
         display: block !important;
         position: fixed !important;
         inset: 0 !important;
-        width: 100vw !important;
+
+        /* Changed to 100% to allow zoom/pan expansion */
+        width: 100% !important;
         height: 100dvh !important;
+
         z-index: 20000 !important;
         background: var(--SmartThemeBlurTintColor, #1a1b26) !important;
+
+        /* SCROLLING BEHAVIOR */
         overflow-y: auto !important;
+        overflow-x: auto !important;
+        /* Allow horizontal scroll if zoomed */
         -webkit-overflow-scrolling: touch;
-        overscroll-behavior: contain !important;
+
+        /* PREVENT REFRESH BUT ALLOW PANNING */
+        overscroll-behavior-y: contain !important;
+        touch-action: pan-x pan-y !important;
+        /* Explicitly allow multi-directional pan */
+
         transform: translateZ(0) !important;
     }
 
@@ -2904,18 +2916,18 @@
         visibility: visible !important;
     }
 
-    /* 3. MODAL WRAPPER (The Clipping Fix) */
+    /* 3. MODAL WRAPPER */
     .pw_modal {
         position: relative !important;
+        /* Fit content naturally, but respect screen width initially */
         width: 100% !important;
-        max-width: 100% !important;
+        max-width: none !important;
+        /* Allow expansion if zoomed */
 
-        /* CRITICAL: Disable the height limits that chop off content */
         max-height: none !important;
         height: auto !important;
         min-height: 100% !important;
 
-        /* CRITICAL: Allow content to overflow (do not clip) */
         overflow: visible !important;
 
         background: transparent !important;
@@ -2925,25 +2937,31 @@
         margin: 0 !important;
         transform: none !important;
 
+        /* Padding for bottom nav/keyboard */
         padding-bottom: 150px !important;
     }
 
-    /* 4. STICKY HEADER */
+    /* 4. SOLID STICKY HEADER (No "See-Through" Text) */
     .pw_modal_header {
         position: sticky;
         top: 0;
         z-index: 999;
-        background: var(--SmartThemeBlurTintColor, #1a1b26) !important;
+
+        /* Heavy blur + Dark semi-transparent layer to ensure text opacity */
+        background: color-mix(in srgb, var(--SmartThemeBlurTintColor, #1a1b26) 95%, black) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+
         border-bottom: 1px solid var(--pw-glass-border);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2) !important;
+        /* Visual separation */
         padding: 10px 16px !important;
-        backdrop-filter: none !important;
     }
 
     /* 5. BODY CONTENT */
     .pw_modal_body {
         height: auto !important;
         max-height: none !important;
-        /* Safety */
         overflow: visible !important;
         padding: 16px !important;
     }
@@ -2961,12 +2979,16 @@
         overflow: visible !important;
     }
 
+    /* 7. Allow Inputs to Scroll Horizontally */
     .pw_director_input {
         width: 100% !important;
         min-width: 0 !important;
+        /* Allow text selection and interaction */
+        user-select: text !important;
+        -webkit-user-select: text !important;
     }
 
-    /* 7. HIDE SCROLLBARS */
+    /* 8. HIDE SCROLLBARS */
     .pw_modal_overlay::-webkit-scrollbar {
         width: 0px;
         background: transparent;
