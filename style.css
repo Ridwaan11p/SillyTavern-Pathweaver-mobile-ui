@@ -2874,3 +2874,93 @@
     width: 30px;
     height: 30px;
 }
+
+/* ============================================================
+   MOBILE LANDSCAPE FIXES (Moto E22 & Termux Optimization)
+   ============================================================ */
+
+/* 
+   Targeting devices with limited height (Landscape Mobile) 
+   and forcing modals to behave like scrollable pages 
+*/
+@media (max-height: 600px) and (orientation: landscape) {
+
+    /* 1. UN-CENTER THE OVERLAY */
+    /* This fixes the "cut off top" issue. We stop centering and allow the overlay itself to scroll. */
+    .pw_modal_overlay {
+        display: block !important; /* Disables flex centering */
+        overflow-y: auto !important; /* Enables scrolling for the whole page */
+        padding: 0 !important;
+        align-items: flex-start !important;
+    }
+
+    /* 2. MAKE MODAL FULL SCREEN */
+    /* Removes borders, radius, and creates a full canvas */
+    .pw_modal {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: 100vh !important; /* Force it to fill screen height */
+        margin: 0 !important;
+        border-radius: 0 !important;
+        transform: none !important;
+        border: none !important;
+        position: relative !important;
+        top: 0 !important;
+        box-shadow: none !important;
+    }
+
+    /* 3. STICKY HEADER */
+    /* Keeps the close button visible while you scroll down */
+    .pw_modal_header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--SmartThemeBlurTintColor, rgba(30, 30, 40, 0.98));
+        padding: 5px 10px !important; /* Compact padding */
+        border-bottom: 1px solid var(--pw-glass-border);
+    }
+
+    /* 4. CONTENT SCROLLING */
+    /* We disable internal scrolling and let the whole page scroll instead */
+    .pw_modal_body {
+        height: auto !important;
+        overflow: visible !important;
+        padding: 10px 10px 40px 10px !important; /* Extra bottom padding for navigation/keyboard */
+    }
+
+    /* 5. DIRECTOR MODE SPECIFIC FIXES */
+    /* Override the Javascript inline max-height so inputs don't get crushed */
+    #pw_director_inputs {
+        max-height: none !important; 
+        overflow: visible !important;
+    }
+    
+    /* Make the director input boxes smaller to fit more on screen */
+    .pw_director_input_group {
+        padding: 4px 8px !important;
+        margin-bottom: 5px;
+    }
+    
+    .pw_director_container {
+        min-height: auto !important;
+    }
+
+    /* Hide non-essential UI elements to save space */
+    .pw_mode_desc {
+        display: none !important; /* Hide description text in landscape */
+    }
+    
+    .pw_mode_option {
+        padding: 6px !important; /* Smaller mode buttons */
+    }
+
+    /* 6. SETTINGS MODAL FIXES */
+    /* Two column layout for toggles to save vertical space */
+    .pw_settings_content .pw_settings_section {
+        padding: 8px !important;
+    }
+    
+    .pw_toggle_row {
+        margin-bottom: 6px !important;
+    }
+}
