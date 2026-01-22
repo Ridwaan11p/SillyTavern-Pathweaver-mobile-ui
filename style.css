@@ -2876,35 +2876,25 @@
 }
 
 /* ============================================================
-   MOBILE & LANDSCAPE FINAL FIX (v3)
-   Fixes: Scrolling, Overscroll/Refresh, and Cut-off Content
+   MOBILE & LANDSCAPE FINAL FIX (v4)
+   Fixes: Clipping Issue (max-height), Scrolling, Overscroll
    ============================================================ */
 
 @media (max-width: 768px),
 (max-height: 600px) {
 
-    /* 1. THE SCROLLABLE PAGE CONTAINER */
+    /* 1. CONTAINER / SCROLLER */
     .pw_modal_overlay {
         display: block !important;
         position: fixed !important;
         inset: 0 !important;
         width: 100vw !important;
         height: 100dvh !important;
-        /* Use dynamic height */
         z-index: 20000 !important;
         background: var(--SmartThemeBlurTintColor, #1a1b26) !important;
-
-        /* SCROLLING MAGIC */
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch;
-        /* Momentum scrolling */
-
-        /* PREVENT PULL-TO-REFRESH */
-        overscroll-behavior-y: contain !important;
-        /* This stops the refresh! */
         overscroll-behavior: contain !important;
-
-        /* Force GPU to keep it visible */
         transform: translateZ(0) !important;
     }
 
@@ -2914,15 +2904,19 @@
         visibility: visible !important;
     }
 
-    /* 3. THE CONTENT WRAPPER */
+    /* 3. MODAL WRAPPER (The Clipping Fix) */
     .pw_modal {
         position: relative !important;
-        /* Changed from static to relative */
         width: 100% !important;
         max-width: 100% !important;
-        /* Allow height to grow naturally with content */
+
+        /* CRITICAL: Disable the height limits that chop off content */
+        max-height: none !important;
         height: auto !important;
         min-height: 100% !important;
+
+        /* CRITICAL: Allow content to overflow (do not clip) */
+        overflow: visible !important;
 
         background: transparent !important;
         border: none !important;
@@ -2931,11 +2925,10 @@
         margin: 0 !important;
         transform: none !important;
 
-        /* IMPORTANT: Move padding here to ensure scrollable area includes bottom space */
         padding-bottom: 150px !important;
     }
 
-    /* 4. STICKY APP HEADER */
+    /* 4. STICKY HEADER */
     .pw_modal_header {
         position: sticky;
         top: 0;
@@ -2949,15 +2942,17 @@
     /* 5. BODY CONTENT */
     .pw_modal_body {
         height: auto !important;
+        max-height: none !important;
+        /* Safety */
         overflow: visible !important;
         padding: 16px !important;
-        /* Remove padding bottom here, we moved it to .pw_modal */
     }
 
     /* 6. DIRECTOR MODE UNLOCKS */
     .pw_director_container {
         min-height: auto !important;
         height: auto !important;
+        max-height: none !important;
         overflow: visible !important;
     }
 
@@ -2966,7 +2961,6 @@
         overflow: visible !important;
     }
 
-    /* Ensure input fields don't cause horizontal scrolling */
     .pw_director_input {
         width: 100% !important;
         min-width: 0 !important;
